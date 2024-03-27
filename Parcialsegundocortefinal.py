@@ -183,7 +183,7 @@ class OnlineStore:
             print(tabulate( table_data, headers=table_headers, tablefmt="fancy_grid"))
 
     def add_to_cart(self):
-        name = input("Ingrese el nombre del producto: ")
+        name = input("Ingrese el nombre del producto, tal y como se encuentra en el cátalogo: ")
         product = self.catalog.get_product(name)
         if product:
             quantity = int(input("Ingrese la cantidad: "))
