@@ -2,6 +2,11 @@ from abc import ABC, abstractmethod
 from typing import List, Dict
 from colorama import Fore, Style,Back
 from tabulate import tabulate
+"""
+Instalar las librerias:
+pip install colorama
+pip install tabulate
+"""
 
 class Product(ABC):
     """
@@ -138,8 +143,9 @@ class OnlineStore:
         self.catalog.add_product(PhysicalProduct("Ibuprofeno", "para aliviar el dolor, la sensibilidad, la inflamación y la rigidez.", 15.000, "Medicamento"))
 
 
-
-
+"""
+Visualización del menú
+"""
     def display_menu(self):
         print(Back.RESET + Fore.RESET+ Back.MAGENTA+ Fore.CYAN+ Style.BRIGHT +"\nBIENVENIDO A TIENDAS GABS \U0001F600  \n"+Back.RESET)
         print(Fore.WHITE + "1. Ver catálogo de productos")
@@ -169,8 +175,11 @@ class OnlineStore:
             print( Back.MAGENTA+ Fore.CYAN+ Style.BRIGHT+ "¡Gracias por visitar nuestra tienda!, Vuelva pronto. " +Back.RESET)
             exit()
         else:
+  
             print("Opción inválida. Intente de nuevo.")
-
+"""
+Mostrar el catalogo
+"""
     def display_catalog(self):
         products = self.catalog.get_products()
         if not products:
@@ -181,6 +190,9 @@ class OnlineStore:
 
             print("\033[4;35m"+"CATÁLOGO DE PRODUCTOS"+'\033[0;m')
             print(tabulate( table_data, headers=table_headers, tablefmt="fancy_grid"))
+"""
+Añadir el producto
+"""
 
     def add_to_cart(self):
         name = input("Ingrese el nombre del producto, tal y como se encuentra en el cátalogo: ")
@@ -191,6 +203,8 @@ class OnlineStore:
             print(Fore.GREEN + Style.BRIGHT+  "Producto agregado al carrito." + Style.RESET_ALL)
         else:
             print(Fore.RED + Style.BRIGHT +"Producto no encontrado." + Style.RESET_ALL)
+
+
 
     def remove_from_cart(self):
         if not self.cart.items:
@@ -204,7 +218,9 @@ class OnlineStore:
             else:
                 print(Fore.RED + "Producto no encontrado en el carrito." + Style.RESET_ALL)
 
-
+"""
+realizar el pedido, verificar su hay producto en el ecarrito, generar descuentos y confirmar.
+"""
     def checkout(self):
             if not self.cart.items:
                 print(Fore.RED + "El carrito está vacío." + Style.RESET_ALL)
@@ -241,7 +257,9 @@ class OnlineStore:
                 else:
                     print(Fore.RED+ "Pedido cancelado.")    
 
- 
+"""
+Buscar por categoría
+"""
     def search_by_category(self):
         category = input("Ingrese la categoría a buscar: ")
         products = self.catalog.get_products_by_category(category)
