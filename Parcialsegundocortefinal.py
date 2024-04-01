@@ -260,6 +260,7 @@ class OnlineStore:
                 product.display()
                 print()
 
+
 if __name__ == "__main__":
     store = OnlineStore()
     store.run()
